@@ -1,6 +1,6 @@
 //Const, lets, and var
 const form = document.getElementById('todoForm')
-const todoInput = document.getElementById('todoInput')
+
 
 //This code only runs on browser
 if(typeof document !== 'undefined') {
@@ -21,7 +21,9 @@ form.addEventListener('submit', event => {
 //Save todo
 
 function saveTodo() {
+    let todoInput = document.getElementById('todoInput')
     const todoValues = todoInput.value;
+    
 
     let values = {
         value: todoValues,
@@ -34,11 +36,15 @@ function saveTodo() {
     addTask()
 }
 
-function addTask(values) {
-    let newTask = values
-
-    let list = newTask.appendChild(document.createElement('li'));
-    document.getElementById('html').appendChild(list);
+//add task and adds to the list
+function addTask() {
+    let task = document.getElementById("list");
+    task.innerHTML = "";
+    for (let i = 0; i < todos.length; i++) {
+      let li = document.createElement('li')
+      li.innerHTML = todos[i].value;
+      task.appendChild(li);
+    }
 }
 
 
